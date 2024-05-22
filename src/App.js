@@ -24,6 +24,8 @@ function App(){
     <TableComponent />
 
     <ImageComponent />
+
+    <h2>Login feature Completed</h2>
     </div>
   )
 }
