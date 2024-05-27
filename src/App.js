@@ -8,65 +8,45 @@ import TableComponent from "./components/tables/table.js"
 import  "./style.css"
 import ImageComponent from "./components/image/image.js"
 import Heading1, {Heading2,Heading3,Heading4,Heading5,Heading6 as SecendaryHeading} from "./components/headings/headings.js"
+import React from "react"
 
 function App(){
-  // const employee={
-  //   name:"Jagadeesh", 
-  //   secondName:"vinay"
-  // }
-  // const {name,secondName}=employee
-  // return(
-  //   <div>
+   const isSubscibed = false
+  
+   const employees=[
+    {
+      teamName:"SRH",
+      players:["a","b"],
+      trophy:[2016]
+    },
+    {
+      teamName:"Mumbai",
+      players:["a","b"],
+      trophy:[2016]
+    },
+   
+  ]
 
-  //     <h1>Hello World {name}</h1>
-  //     <h1>Hello World {secondName}</h1>
-      
-  //   </div>
-  // )
-
-
-  const isSubscribe=true
-
-  // if(isSubscribe){
-  //   return <ListComponent/>
-  // }
-  // else{
-  //   return <ImageComponent/>
-  // }
-
-  // return (
-  //   <div>
-  //     {
-  //       isSubscribe
-  //       ?
-  //       <ListComponent/>
-  //       :
-  //      <h1>Please subscribe</h1>
-  //     }
-  //   </div>
-  // )
-
-
-  // return (
-  //   <div>
-  //     {
-  //       isSubscribe  &&  <ListComponent/>
-    
-  //     }
-  //   </div>
-  // )
 
    return(
-    <div>
-    <Heading1/>
-    <Heading2/>
-    <Heading3/>
-    <Heading4/>
-    <Heading5/>
-    <SecendaryHeading/>
-    </div>
-   )
+    <>
+   
+    {
+      employees.map((eachEmployee,index)=>{
+        const{teamName,players,trophy} =eachEmployee
+                return(
+          <React.Fragment >
+            <h2>{index+1}</h2>
+            <h3>{teamName}</h3>
+            <h3>{players}</h3>
+            <h3>{trophy}</h3>
+          </React.Fragment>
+        )
+      })
+    }
 
+    </>
+   )
 }
 
 export default App
