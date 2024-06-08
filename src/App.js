@@ -9,6 +9,13 @@ import  "./style.css"
 import ImageComponent from "./components/image/image.js"
 import Heading1, {Heading2,Heading3,Heading4,Heading5,Heading6 as SecendaryHeading} from "./components/headings/headings.js"
 import React from "react"
+import NavBar from "./components/navBar/navbar.js"
+import AccordionComponent from "./components/accordion/accordion.js"
+import ProgressBarComponent from "./components/prograsbar/prograsbar.js"
+import SpinnerComponent from "./components/spinners/spinners.js"
+import CarouselComponent from "./components/carousels/carousels.js"
+import ModalComponent from "./components/modals/modal.js"
+
 
 function App(){
    const isSubscibed = false
@@ -30,20 +37,13 @@ function App(){
 
    return(
     <>
-   
-    {
-      employees.map((eachEmployee,index)=>{
-        const{teamName,players,trophy} =eachEmployee
-                return(
-          <React.Fragment >
-            <h2>{index+1}</h2>
-            <h3>{teamName}</h3>
-            <h3>{players}</h3>
-            <h3>{trophy}</h3>
-          </React.Fragment>
-        )
-      })
-    }
+  <NavBar/>
+  <AccordionComponent/>
+
+  <ProgressBarComponent/>
+  <SpinnerComponent/>
+  <CarouselComponent/>
+  <ModalComponent/>
 
     </>
    )

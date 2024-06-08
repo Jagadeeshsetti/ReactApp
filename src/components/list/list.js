@@ -4,16 +4,16 @@
 const ListComponent = ()=>{
     return(
        
-        <ul>
-             <center>
+        <ol>
+            
             <h1>oredr list</h1>
             <li>HTML</li>
             <li>CSS</li>
             <li>JS</li>
             <li>REACT</li>
             <li>SQL</li>
-            </center>
-            </ul>
+           
+            </ol>
         
        
     )
