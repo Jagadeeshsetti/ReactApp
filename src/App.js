@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import NavBar from "./components/navBar/navbar.js"
 import AccordionComponent from "./components/accordion/accordion.js"
 import ButtonComponent from "./components/button/button.js";
@@ -48,17 +48,32 @@ export default App
 
 
 
+// const EachTeam=(prop)=>{
+//   const {eachTeam}=prop
+//   return(
+//     <>
+//     <Heading1 title={eachTeam.teamName }/>
+//     <Heading2 title={eachTeam.trophy} />
+//     <ListComponent list={eachTeam.players} />
+//     </>
+//   )
+// }
 
 
-const EachTeam=(prop)=>{
-  const {eachTeam}=prop
-  return(
-    <>
-    <Heading1 title={eachTeam.teamName }/>
-    <Heading2 title={eachTeam.trophy} />
-    <ListComponent list={eachTeam.players} />
-    </>
-  )
+
+class EachTeam extends Component{
+  render(){ 
+    const{eachTeam:{teamName,trophy,players}}=this.props
+    return(
+
+      <>
+          <Heading1 title={teamName }/>
+          <Heading2 title={trophy} />
+          <ListComponent list={players} />
+     </>
+
+    )
+  }
 }
 
 
