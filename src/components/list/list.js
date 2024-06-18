@@ -1,20 +1,18 @@
 
 
 
-const ListComponent = ()=>{
+const ListComponent = (prop)=>{
+    const{list}=prop
+    console.log(prop)
     return(
-       
-        <ol>
-            
-            <h1>oredr list</h1>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JS</li>
-            <li>REACT</li>
-            <li>SQL</li>
-           
-            </ol>
-        
+       <ol>
+
+        {
+            list.map(each=>{
+                return <li>{each} </li>;
+            })
+        }
+       </ol>
        
     )
 }

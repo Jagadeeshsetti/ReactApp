@@ -1,6 +1,10 @@
-const ButtonComponent = ()=>{
+const ButtonComponent = (prop)=>{
+
+  console.log(prop)
+
+  const {text,textColor="yellow"}=prop
     return(
-      <center> <button class="btn">Login</button></center> 
+     <button style={{color: textColor ,backgroundColor: "green" }}>{text}</button> 
     )
 }
 export default ButtonComponent

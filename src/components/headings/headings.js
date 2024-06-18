@@ -1,17 +1,18 @@
-const Heading1 = () =>{
+const Heading1 = (prop) =>{
+
+    const{title}=prop
     return(
-        <div>
-            <h1>H1 heading....</h1>
-        </div>
+       <h2>{ title }</h2>
     )
 }
 export default Heading1
 
-export const Heading2 = () =>{
+export const Heading2 = (prop) =>{
+    const{title}=prop
     return(
-        <div>
-            <h2>H2 heading....</h2>
-        </div>
+       
+            <h2>{title}</h2>
+       
     )
 }
 export  const Heading3 = () =>{

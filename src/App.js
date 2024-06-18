@@ -1,52 +1,77 @@
-
-
-
-import Button from "./components/button/button.js"
-import ListComponent from "./components/list/list.js"
-import FormComponent from "./components/forms/form.js"
-import TableComponent from "./components/tables/table.js"
-import  "./style.css"
-import ImageComponent from "./components/image/image.js"
-import Heading1, {Heading2,Heading3,Heading4,Heading5,Heading6 as SecendaryHeading} from "./components/headings/headings.js"
 import React from "react"
 import NavBar from "./components/navBar/navbar.js"
 import AccordionComponent from "./components/accordion/accordion.js"
-import ProgressBarComponent from "./components/prograsbar/prograsbar.js"
-import SpinnerComponent from "./components/spinners/spinners.js"
-import CarouselComponent from "./components/carousels/carousels.js"
-import ModalComponent from "./components/modals/modal.js"
+import ButtonComponent from "./components/button/button.js";
+import GreetingComponent from "./components/greeting/greeting.js";
+import Heading1, { Heading2 } from "./components/headings/headings.js";
+import ListComponent from "./components/list/list.js";
+
 
 
 function App(){
-   const isSubscibed = false
-  
-   const employees=[
+  const teams=[
     {
       teamName:"SRH",
       players:["a","b"],
-      trophy:[2016]
+      trophy:2016
     },
     {
       teamName:"Mumbai",
-      players:["a","b"],
-      trophy:[2016]
+      players:["c","d "],
+      trophy:2016
     },
+    {
+      teamName:"KKR",
+      players:["e","f"],
+      trophy:2016
+    }
    
-  ]
-
+   ]
+   
 
    return(
     <>
-  <NavBar/>
-  <AccordionComponent/>
-
-  <ProgressBarComponent/>
-  <SpinnerComponent/>
-  <CarouselComponent/>
-  <ModalComponent/>
-
+   {
+    teams.map(eachTeam=>{
+      return(
+      <>
+      <EachTeam eachTeam={eachTeam}/>
+      </>
+      )
+    })
+   }
     </>
-   )
+   );
 }
 
 export default App
+
+
+
+
+
+const EachTeam=(prop)=>{
+  const {eachTeam}=prop
+  return(
+    <>
+    <Heading1 title={eachTeam.teamName }/>
+    <Heading2 title={eachTeam.trophy} />
+    <ListComponent list={eachTeam.players} />
+    </>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+const isSubscibed = false
+  
+
