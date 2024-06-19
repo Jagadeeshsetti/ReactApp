@@ -5,6 +5,7 @@ import ButtonComponent from "./components/button/button.js";
 import GreetingComponent from "./components/greeting/greeting.js";
 import Heading1, { Heading2 } from "./components/headings/headings.js";
 import ListComponent from "./components/list/list.js";
+import YoutubeButton from "./components/youtubeButton/youtubeButton.js";
 
 
 
@@ -31,15 +32,7 @@ function App(){
 
    return(
     <>
-   {
-    teams.map(eachTeam=>{
-      return(
-      <>
-      <EachTeam eachTeam={eachTeam}/>
-      </>
-      )
-    })
-   }
+  <YoutubeButton />
     </>
    );
 }
