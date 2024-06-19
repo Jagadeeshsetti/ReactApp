@@ -22,10 +22,11 @@ export  const Heading3 = () =>{
         </div>
     )
 }
-export const Heading4 = () =>{
+export const Heading4 = (props) =>{
+    const { title } = props
     return(
         <div>
-            <h4>H4 heading....</h4>
+            <h4>{title}</h4>
         </div>
     )
 }
