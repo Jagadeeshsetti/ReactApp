@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import ImageComponent from "../image/image";
 import ListComponent from "../list/list";
 import Heading1, { Heading4 } from "../headings/headings";
@@ -8,9 +8,22 @@ import RotatingLineSpinner from "../spinner/rotating-spinner";
 
 class ProductListing extends Component {
 
-    state={
-        recipesList : [],
-        isSucess:false,
+    // state={
+    //     recipesList : [],
+    //     isSucess:false,
+    // }
+
+
+    constructor() {
+        console.log("constructor.....")
+        super();
+        this.state = {
+            recipesList: [],
+            eachRecipe:{},
+            isSucess: false,
+            count:1,
+            favoritecolor:"red",
+        };
     }
 
 
@@ -84,23 +97,69 @@ class ProductListing extends Component {
     };
 
     componentDidMount(){
-        this.fetchProducts () 
+        console.log("componentDidMount.....")
+        // this.fetchProducts () 
+        document.title=`React app ${this.state.count}`;
     
+        }
+        
+        static getDerivedStateFromProps(props, state) {
+            console.log("getDerivedStateFromProps.....")
+            return {favoritecolor: props.favcol };
+          }
+        
+
+         updateTitle=()=> {
+            this.setState({
+                count: this.state.count + 1,
+            })
+        }
+
+        componentDidUpdate() {
+            console.log("componentDidUpdate.....")
+            document.title=`React app ${this.state.count}`;
+            // this.fetchEachRecipe();
+        }
+
+        fetchEachRecipe=async()=>{
+            const { data, status } = await axios.get(`https://dummyjson.com/recipes/${this.state.count}`)
+             
+            this.setState({
+                eachRecipe: data,
+            })
+            console.log(data)
+        };
+
+        // shouldComponentUpdate(){
+        //     return false;
+        // } 
+
+        getSnapshotBeforeUpdate(props,state){
+            console.log(props,state,"getSnapshotBeforeUpdate..")
+            return null;
+
         }
 
     render() {
+        console.log("render.....")
         return(
 
             <>
+            <h3 style={{color:this.state.favoritecolor}}>{this.state.favoritecolor}</h3>
            <h2>Product Listing</h2> 
-          
+           <h3>{this.state.count}</h3>
+          <button onClick={this.updateTitle}>Update count</button>
+
+          {/* {
+            <h3>{this.state.eachRecipe?.name}</h3>
+          } */}
             
-            {
+            {/* {
                 this.state.isSucess
                 ?
                 this.state.recipesList.map((eachRecipe)=>{
                     return(
-                        <>
+                        <React.Fragment key={eachRecipe.id}>
                         <Heading4 title={eachRecipe.name} />
                         <ImageComponent src={eachRecipe.image} />
                         <Heading1  title={"Ingredients"}/>
@@ -108,7 +167,7 @@ class ProductListing extends Component {
                         <Heading1  title={"Instructions"}/>
                         <ListComponent  list={eachRecipe.instructions} />
                         
-                        </>
+                        </React.Fragment>
                     )
                 }):(
                 
@@ -118,7 +177,7 @@ class ProductListing extends Component {
                  strokeColor={"green"}
                  visible={true}
                  />
-            )}
+            )} */}
             </>
         )
     }

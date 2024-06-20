@@ -3,13 +3,14 @@
 
 const ListComponent = (prop)=>{
     const{list}=prop
-    console.log(prop)
+    // console.log(prop)
+    // console.log(list)
     return(
        <ol>
 
         {
-            list.map(each=>{
-                return <li>{each} </li>;
+            list.map((each, i)=>{
+                return <li key={i}>{each} </li>;
             })
         }
        </ol>

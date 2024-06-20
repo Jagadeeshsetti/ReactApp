@@ -33,7 +33,7 @@ function App(){
 
    return(
     <>
-  <ProductListing />
+  <ProductListing  favcol={"green"}/>
     </>
    );
 }
