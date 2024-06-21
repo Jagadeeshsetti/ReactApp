@@ -8,6 +8,7 @@ import ListComponent from "./components/list/list.js";
 import YoutubeButton from "./components/youtubeButton/youtubeButton.js";
 import ProductListing from "./components/productListing/productListing.js";
 import UnmountingPhase from "./components/unmounting/parent.js";
+import CircleGenerator from "./components/circleGenerate/circle-generator.js";
 
 
 
@@ -34,9 +35,7 @@ function App(){
 
    return(
     <>
-  {/* <ProductListing  favcol={"green"}/> */}
-
-  <UnmountingPhase />
+<CircleGenerator />
     </>
    );
 }
