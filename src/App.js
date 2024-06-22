@@ -11,6 +11,7 @@ import UnmountingPhase from "./components/unmounting/parent.js";
 import CircleGenerator from "./components/circleGenerate/circle-generator.js";
 import ProfileComponent from "./components/profile/profile.js";
 import UncontrolledForm from "./components/forms/uncontrolled.js";
+import ControlledComponents from "./components/forms/controlled.js";
 
 
 
@@ -37,7 +38,9 @@ function App(){
 
    return(
     <>
-<UncontrolledForm />
+{/* <UncontrolledForm /> */}
+
+ <ControlledComponents />
     </>
    );
 }
