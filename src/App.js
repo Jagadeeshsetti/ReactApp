@@ -10,6 +10,7 @@ import ProductListing from "./components/productListing/productListing.js";
 import UnmountingPhase from "./components/unmounting/parent.js";
 import CircleGenerator from "./components/circleGenerate/circle-generator.js";
 import ProfileComponent from "./components/profile/profile.js";
+import UncontrolledForm from "./components/forms/uncontrolled.js";
 
 
 
@@ -36,7 +37,7 @@ function App(){
 
    return(
     <>
-<ProfileComponent /> 
+<UncontrolledForm />
     </>
    );
 }
@@ -64,9 +65,7 @@ class EachTeam extends Component{
     return(
 
       <>
-          <Heading1 title={teamName }/>
-          <Heading2 title={trophy} />
-          <ListComponent list={players} />
+   
      </>
 
     )
