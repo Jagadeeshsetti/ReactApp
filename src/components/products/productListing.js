@@ -6,10 +6,21 @@ import "./styles.css";
 
 const ProductListing = () => {
     const [products, setProducts] = useState([]);
+    const [filterValue, setFilterValue] = useState("All")
+    const [loading, setLoading] = useState(false)
+    const [categories, setCategory] = useState(["All"]);
 
     useEffect(() => {
+        fetchCategories();
         fetchProducts();
     }, []);
+
+    const fetchCategories = async () => {
+        const{data, status} = await axios.get("https://fakestoreapi.com/products/categories")
+        if(status===200){
+             setCategory([...categories, ...data]);
+        }
+    }
 
     const fetchProducts = async () => {
         try {
@@ -18,6 +29,7 @@ const ProductListing = () => {
 
             if (status === 200) {
                 setProducts(data);
+                setLoading(false);
             } else {
                 alert("API request not successful");
             }
@@ -26,11 +38,44 @@ const ProductListing = () => {
         }
     };
 
+    const handleChange = (event) =>{
+        setLoading(true);
+        const optionSeleceted = event.target.value
+        console.log("handleChange", optionSeleceted);
+        setFilterValue(optionSeleceted)
+        categoryFilterAsyncCall(optionSeleceted);
+    }
+
+    const categoryFilterAsyncCall = async(optionSeleceted) =>{
+        if(optionSeleceted==="All"){
+            fetchProducts()
+        }else{
+            const {data, status} = await axios(`https://fakestoreapi.com/products/category/${optionSeleceted}`)
+           if(status===200){
+            setProducts(data);
+            setLoading(false);
+           }
+        }
+
+        }
+      
+
     return (
         <>
-            <h3>Product List</h3>
+            {/* <h3>Product List</h3> */}
+            <select value={filterValue}  onChange={handleChange}>
+            {
+                categories.map((each) =>{
+                    return(
+                        <>
+                        <option value={each}>{each}</option>
+                        </>
+                    )
+                })
+            }
+            </select>
             <div className="product-list">
-                {products.length > 0 ? (
+                {products.length > 0 && !loading ? (
                     products.map(eachObject => {
                         const { id, title, price, description, category, image, rating } = eachObject;
 
