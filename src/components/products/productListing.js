@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import RotatingLineSpinner from "../spinner/rotating-spinner";
 import ImageComponent from "../image/image";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const ProductListing = () => {
     const [products, setProducts] = useState([]);
@@ -87,6 +88,7 @@ const ProductListing = () => {
                                 <p><strong>Price:</strong> ${price}</p>
                                 <p><strong>Description:</strong> {description}</p>
                                 <p><strong>Rating:</strong> {rating.rate} ({rating.count} reviews)</p>
+                                <button><Link  to={`${category}/${id}`} >Click to see product</Link></button>
                             </div>
                         );
                     })
@@ -98,4 +100,4 @@ const ProductListing = () => {
     );
 };
 
-export default ProductListing;
+export default ProductListing
