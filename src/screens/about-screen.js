@@ -3,6 +3,9 @@ import React, { useContext } from 'react'
 import NavBar from '../components/navBar/navbar'
 import { UserInfo } from '../navigation/navigation-stack'
 import { DECREASE_COUNT, INCREASE_COUNT } from '../navigation/jsFunctions'
+import Usememo from '../components/useMemo/useMemo'
+import ParentComponent from '../components/useCallback/parent'
+
 
 function AboutScreen() {
   const { increaseCount, count, currentState, dispatch } = useContext(UserInfo)
@@ -10,20 +13,13 @@ function AboutScreen() {
   return (
     <div>
       <NavBar />
-      <h2>Welcome to about screen {currentState.count}</h2>
+      <h2>Welcome to about screenUsememo</h2>
 
-      <button onClick={()=>{
+      {/* <Usememo /> */}
 
-        dispatch( {type:INCREASE_COUNT} );
+      {/* <ParentComponent /> */}
 
-      }}>IncreaseCount</button>
-
-
-      <button onClick={()=>{
-
-        dispatch( {type:DECREASE_COUNT} );
-
-         }}>DecreaseCount</button>
+    <ParentComponent />
 
     </div>
   )
